@@ -1,0 +1,101 @@
+[build-system]
+requires = ["setuptools>=61.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "viralify-diagrams"
+version = "1.0.0"
+description = "Professional diagram generation for video content with theme customization and animation support"
+readme = "README.md"
+license = {text = "MIT"}
+requires-python = ">=3.9"
+authors = [
+    {name = "Olsisoft", email = "contact@olsisoft.com"}
+]
+keywords = [
+    "diagrams",
+    "video",
+    "animation",
+    "svg",
+    "architecture",
+    "visualization",
+    "presentation"
+]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Topic :: Multimedia :: Graphics",
+    "Topic :: Multimedia :: Video",
+    "Topic :: Scientific/Engineering :: Visualization",
+]
+dependencies = [
+    "pillow>=10.0.0",
+]
+
+[project.optional-dependencies]
+png = [
+    "cairosvg>=2.7.0",
+]
+video = [
+    "cairosvg>=2.7.0",
+]
+dev = [
+    "pytest>=7.0.0",
+    "pytest-cov>=4.0.0",
+    "black>=23.0.0",
+    "mypy>=1.0.0",
+    "ruff>=0.1.0",
+]
+all = [
+    "cairosvg>=2.7.0",
+]
+
+[project.urls]
+Homepage = "https://github.com/olsisoft/viralify-diagrams"
+Documentation = "https://github.com/olsisoft/viralify-diagrams#readme"
+Repository = "https://github.com/olsisoft/viralify-diagrams"
+Issues = "https://github.com/olsisoft/viralify-diagrams/issues"
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["viralify_diagrams*"]
+
+[tool.black]
+line-length = 100
+target-version = ['py39', 'py310', 'py311', 'py312']
+include = '\.pyi?$'
+exclude = '''
+/(
+    \.git
+  | \.mypy_cache
+  | \.pytest_cache
+  | \.venv
+  | dist
+  | build
+)/
+'''
+
+[tool.mypy]
+python_version = "3.9"
+warn_return_any = true
+warn_unused_configs = true
+ignore_missing_imports = true
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+python_files = "test_*.py"
+python_functions = "test_*"
+addopts = "-v --cov=viralify_diagrams --cov-report=term-missing"
+
+[tool.ruff]
+line-length = 100
+target-version = "py39"
+select = ["E", "F", "W", "I", "N", "D", "UP", "B", "C4"]
+ignore = ["D100", "D104"]

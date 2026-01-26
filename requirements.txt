@@ -1,0 +1,14 @@
+# Core dependencies
+pillow>=10.0.0
+
+# SVG rendering (optional, for PNG export)
+cairosvg>=2.7.0
+
+# For optional video creation
+# ffmpeg-python>=0.2.0
+
+# Development dependencies
+pytest>=7.0.0
+pytest-cov>=4.0.0
+black>=23.0.0
+mypy>=1.0.0
