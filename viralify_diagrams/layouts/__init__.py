@@ -6,6 +6,13 @@ Available layouts:
 - HorizontalLayout: Left-to-right flow
 - VerticalLayout: Top-to-bottom flow
 - RadialLayout: Central node with satellites
+- GraphvizLayout: Hybrid layout using Graphviz algorithms (recommended for 10+ nodes)
+
+The GraphvizLayout uses PyGraphviz for optimal node positioning with:
+- Edge crossing minimization
+- Automatic cluster containment
+- Multiple algorithms (dot, neato, fdp, sfdp, circo, twopi)
+- Scales to 50+ components
 """
 
 from viralify_diagrams.layouts.base import BaseLayout
@@ -13,6 +20,11 @@ from viralify_diagrams.layouts.grid import GridLayout
 from viralify_diagrams.layouts.horizontal import HorizontalLayout
 from viralify_diagrams.layouts.vertical import VerticalLayout
 from viralify_diagrams.layouts.radial import RadialLayout
+from viralify_diagrams.layouts.graphviz_layout import (
+    GraphvizLayout,
+    GraphvizAlgorithm,
+    auto_layout,
+)
 
 __all__ = [
     "BaseLayout",
@@ -20,19 +32,51 @@ __all__ = [
     "HorizontalLayout",
     "VerticalLayout",
     "RadialLayout",
+    "GraphvizLayout",
+    "GraphvizAlgorithm",
+    "auto_layout",
 ]
 
 
-def get_layout(name: str) -> BaseLayout:
-    """Get a layout engine by name"""
+def get_layout(name: str, **kwargs) -> BaseLayout:
+    """
+    Get a layout engine by name.
+
+    Args:
+        name: Layout name (grid, horizontal, vertical, radial, graphviz, auto)
+        **kwargs: Additional arguments for the layout
+
+    Returns:
+        Layout instance
+
+    Example:
+        >>> layout = get_layout("graphviz", algorithm="dot")
+        >>> diagram = layout.layout(diagram)
+    """
     layouts = {
         "grid": GridLayout,
         "horizontal": HorizontalLayout,
         "vertical": VerticalLayout,
         "radial": RadialLayout,
+        "graphviz": GraphvizLayout,
+        # Aliases for graphviz algorithms
+        "dot": lambda **kw: GraphvizLayout(algorithm="dot", **kw),
+        "neato": lambda **kw: GraphvizLayout(algorithm="neato", **kw),
+        "fdp": lambda **kw: GraphvizLayout(algorithm="fdp", **kw),
+        "sfdp": lambda **kw: GraphvizLayout(algorithm="sfdp", **kw),
+        "circo": lambda **kw: GraphvizLayout(algorithm="circo", **kw),
+        "twopi": lambda **kw: GraphvizLayout(algorithm="twopi", **kw),
     }
 
-    if name not in layouts:
-        raise ValueError(f"Unknown layout: {name}. Available: {list(layouts.keys())}")
+    if name == "auto":
+        # Auto layout requires the diagram, so return a special function
+        return GraphvizLayout(**kwargs)
 
-    return layouts[name]()
+    if name not in layouts:
+        available = list(layouts.keys()) + ["auto"]
+        raise ValueError(f"Unknown layout: {name}. Available: {available}")
+
+    layout_class = layouts[name]
+    if callable(layout_class) and not isinstance(layout_class, type):
+        return layout_class(**kwargs)
+    return layout_class(**kwargs)

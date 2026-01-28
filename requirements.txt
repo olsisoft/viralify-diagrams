@@ -4,6 +4,10 @@ pillow>=10.0.0
 # SVG rendering (optional, for PNG export)
 cairosvg>=2.7.0
 
+# Graphviz layout (optional but recommended for 10+ nodes)
+# Requires graphviz system package: apt-get install graphviz graphviz-dev
+pygraphviz>=1.11
+
 # For optional video creation
 # ffmpeg-python>=0.2.0
 
