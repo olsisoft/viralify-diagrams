@@ -139,19 +139,6 @@ from viralify_diagrams.templates.business import (
     BPMNProcessTemplate,
 )
 
-# Integration
-from viralify_diagrams.integration import (
-    PresentationGeneratorClient,
-    DiagramContentRequest,
-    DiagramContentResponse,
-    ContentElement,
-    get_presentation_client,
-    DiagramOrchestrator,
-    OrchestrationRequest,
-    OrchestrationResult,
-    orchestrate_diagram_generation,
-)
-
 # Professional icons
 from viralify_diagrams.icons import (
     IconRegistry,
@@ -293,14 +280,4 @@ __all__ = [
     "KubernetesTemplate",
     # Templates - Business
     "BPMNProcessTemplate",
-    # Integration
-    "PresentationGeneratorClient",
-    "DiagramContentRequest",
-    "DiagramContentResponse",
-    "ContentElement",
-    "get_presentation_client",
-    "DiagramOrchestrator",
-    "OrchestrationRequest",
-    "OrchestrationResult",
-    "orchestrate_diagram_generation",
 ]
