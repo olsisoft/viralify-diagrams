@@ -10,9 +10,10 @@ Fork of mingrammer/diagrams optimized for:
 - Professional icons for AWS, GCP, Azure, Kubernetes
 - Smart edge routing with bezier and orthogonal paths
 - Cloud provider themes matching official design guidelines
+- Enterprise edge management (100+ connections)
 """
 
-__version__ = "2.0.0"
+__version__ = "2.1.0"
 
 from viralify_diagrams.core.diagram import Diagram, Cluster, Node, Edge
 from viralify_diagrams.core.theme import Theme, ThemeManager, get_theme_manager
@@ -30,6 +31,26 @@ from viralify_diagrams.layouts import (
     EdgeRoutingMode,
     AnchorPoint,
     apply_smart_routing,
+    # Edge bundling
+    EdgeBundler,
+    BundlingAlgorithm,
+    BundleConfig,
+    apply_edge_bundling,
+    # Edge aggregation
+    EdgeAggregator,
+    AggregationMode,
+    AggregationConfig,
+    aggregate_edges,
+    # Edge styling
+    EdgeStyler,
+    ImportanceMetric,
+    ColorScheme,
+    StyleConfig,
+    style_edges,
+    # Channel routing
+    ChannelRouter,
+    ChannelConfig,
+    apply_channel_routing,
 )
 from viralify_diagrams.exporters import (
     SVGExporter,
@@ -96,6 +117,26 @@ __all__ = [
     "EdgeRoutingMode",
     "AnchorPoint",
     "apply_smart_routing",
+    # Edge Bundling (Enterprise)
+    "EdgeBundler",
+    "BundlingAlgorithm",
+    "BundleConfig",
+    "apply_edge_bundling",
+    # Edge Aggregation (Enterprise)
+    "EdgeAggregator",
+    "AggregationMode",
+    "AggregationConfig",
+    "aggregate_edges",
+    # Edge Styling (Enterprise)
+    "EdgeStyler",
+    "ImportanceMetric",
+    "ColorScheme",
+    "StyleConfig",
+    "style_edges",
+    # Channel Routing (Enterprise)
+    "ChannelRouter",
+    "ChannelConfig",
+    "apply_channel_routing",
     # Exporters
     "SVGExporter",
     "PNGFrameExporter",

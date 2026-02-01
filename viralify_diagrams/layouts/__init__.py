@@ -13,6 +13,12 @@ Smart Edge Routing:
 - EdgeRoutingMode: Direct, Bezier, Orthogonal, Curved, Bundled
 - AnchorPoint: N, S, E, W, NE, NW, SE, SW, CENTER, AUTO
 
+Enterprise Edge Management (100+ connections):
+- EdgeBundler: Force-directed edge bundling to reduce visual clutter
+- EdgeAggregator: Cluster-based aggregation with count badges
+- EdgeStyler: Importance scoring and dynamic styling
+- ChannelRouter: Circuit board-style orthogonal routing
+
 The GraphvizLayout uses PyGraphviz for optimal node positioning with:
 - Edge crossing minimization
 - Automatic cluster containment
@@ -39,6 +45,42 @@ from viralify_diagrams.layouts.smart_edges import (
     apply_smart_routing,
 )
 
+# Enterprise Edge Management
+from viralify_diagrams.layouts.edge_bundler import (
+    EdgeBundler,
+    BundlingAlgorithm,
+    BundleConfig,
+    BundledEdge,
+    EdgeBundle,
+    apply_edge_bundling,
+)
+from viralify_diagrams.layouts.edge_aggregator import (
+    EdgeAggregator,
+    AggregationMode,
+    AggregationConfig,
+    AggregatedEdge,
+    AggregationResult,
+    aggregate_edges,
+)
+from viralify_diagrams.layouts.edge_styler import (
+    EdgeStyler,
+    ImportanceMetric,
+    ColorScheme,
+    StyleConfig,
+    EdgeStyle,
+    StyledEdge,
+    style_edges,
+)
+from viralify_diagrams.layouts.channel_router import (
+    ChannelRouter,
+    ChannelConfig,
+    ChannelRoutedEdge,
+    RoutingSegment,
+    Direction,
+    ChannelSide,
+    apply_channel_routing,
+)
+
 __all__ = [
     "BaseLayout",
     "GridLayout",
@@ -55,6 +97,36 @@ __all__ = [
     "RoutedEdge",
     "EdgeRoutingConfig",
     "apply_smart_routing",
+    # Edge Bundling
+    "EdgeBundler",
+    "BundlingAlgorithm",
+    "BundleConfig",
+    "BundledEdge",
+    "EdgeBundle",
+    "apply_edge_bundling",
+    # Edge Aggregation
+    "EdgeAggregator",
+    "AggregationMode",
+    "AggregationConfig",
+    "AggregatedEdge",
+    "AggregationResult",
+    "aggregate_edges",
+    # Edge Styling
+    "EdgeStyler",
+    "ImportanceMetric",
+    "ColorScheme",
+    "StyleConfig",
+    "EdgeStyle",
+    "StyledEdge",
+    "style_edges",
+    # Channel Routing
+    "ChannelRouter",
+    "ChannelConfig",
+    "ChannelRoutedEdge",
+    "RoutingSegment",
+    "Direction",
+    "ChannelSide",
+    "apply_channel_routing",
 ]
 
 
