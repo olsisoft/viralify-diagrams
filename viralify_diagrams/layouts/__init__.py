@@ -8,6 +8,11 @@ Available layouts:
 - RadialLayout: Central node with satellites
 - GraphvizLayout: Hybrid layout using Graphviz algorithms (recommended for 10+ nodes)
 
+Smart Edge Routing:
+- SmartEdgeRouter: Intelligent edge routing with multiple algorithms
+- EdgeRoutingMode: Direct, Bezier, Orthogonal, Curved, Bundled
+- AnchorPoint: N, S, E, W, NE, NW, SE, SW, CENTER, AUTO
+
 The GraphvizLayout uses PyGraphviz for optimal node positioning with:
 - Edge crossing minimization
 - Automatic cluster containment
@@ -25,6 +30,14 @@ from viralify_diagrams.layouts.graphviz_layout import (
     GraphvizAlgorithm,
     auto_layout,
 )
+from viralify_diagrams.layouts.smart_edges import (
+    SmartEdgeRouter,
+    EdgeRoutingMode,
+    AnchorPoint,
+    RoutedEdge,
+    EdgeRoutingConfig,
+    apply_smart_routing,
+)
 
 __all__ = [
     "BaseLayout",
@@ -35,6 +48,13 @@ __all__ = [
     "GraphvizLayout",
     "GraphvizAlgorithm",
     "auto_layout",
+    # Smart Edge Routing
+    "SmartEdgeRouter",
+    "EdgeRoutingMode",
+    "AnchorPoint",
+    "RoutedEdge",
+    "EdgeRoutingConfig",
+    "apply_smart_routing",
 ]
 
 
