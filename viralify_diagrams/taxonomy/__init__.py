@@ -34,6 +34,7 @@ from viralify_diagrams.taxonomy.slide_optimizer import (
     SlideOptimizer,
     SlideRecommendation,
     OptimizationConfig,
+    OptimizationResult,
     optimize_slides,
 )
 
@@ -58,5 +59,6 @@ __all__ = [
     "SlideOptimizer",
     "SlideRecommendation",
     "OptimizationConfig",
+    "OptimizationResult",
     "optimize_slides",
 ]
