@@ -69,18 +69,18 @@ from viralify_diagrams.taxonomy import (
     DiagramDomain,
     DiagramCategory,
     DiagramType,
-    TargetAudience,
-    DiagramComplexity,
+    AudienceType,
+    ComplexityLevel,
     # Classifier
     RequestClassifier,
     ClassificationResult,
     # Router
     DiagramRouter,
     RoutingResult,
-    SlideConfig,
     # Slide Optimizer
     SlideOptimizer,
     SlideRecommendation,
+    OptimizationConfig,
     OptimizationResult,
 )
 
@@ -238,15 +238,15 @@ __all__ = [
     "DiagramDomain",
     "DiagramCategory",
     "DiagramType",
-    "TargetAudience",
-    "DiagramComplexity",
+    "AudienceType",
+    "ComplexityLevel",
     "RequestClassifier",
     "ClassificationResult",
     "DiagramRouter",
     "RoutingResult",
-    "SlideConfig",
     "SlideOptimizer",
     "SlideRecommendation",
+    "OptimizationConfig",
     "OptimizationResult",
     # Templates - Base
     "DiagramTemplate",
